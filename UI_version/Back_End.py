@@ -1,14 +1,19 @@
 from openpyxl import Workbook, load_workbook
-
-grades = "Sample Grades DB.xlsx"
-wb1 = load_workbook(grades)
-ws1 = wb1.active
+try:
+    grades = "/home/nigga/Desktop/Python_projects/student_data/DB/Sample Grades DB.xlsx"
+    wb1 = load_workbook(grades)
+    ws1 = wb1.active
+except FileNotFoundError:
+        wb = Workbook()
+        ws = wb.active
+        ws.append(["student name","Student ID","Grades"])
+        wb.save("Sample Grades DB.xlsx")
 
 class faculty:
     def __init__(self,name,id):
         self.name = name
         self.id = id
-    
+
 class student:
     def __init__(self,name,id):
         self.name = name
