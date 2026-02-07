@@ -1,6 +1,12 @@
 from openpyxl import Workbook, load_workbook
+import json
+
+with open ("StudCred.json", "r") as f:
+    Student  = json.load(f)
+with open ("ProfCred.json", "r") as f:
+    Faculty = json.load(f)
 try:
-    grades = "/home/nigga/Desktop/Python_projects/student_data/DB/Sample Grades DB.xlsx"
+    grades = "Sample Grades DB.xlsx"
     wb1 = load_workbook(grades)
     ws1 = wb1.active
 except FileNotFoundError:
@@ -13,6 +19,14 @@ class faculty:
     def __init__(self,name,id):
         self.name = name
         self.id = id
+    def login(self):
+        if self.name in Faculty:
+            if Student[self.name] == self.id:
+                return True
+            else:
+                return False
+        return False
+    
 
 class student:
     def __init__(self,name,id):

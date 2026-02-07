@@ -1,13 +1,6 @@
-import secrets
-import smtplib
-import string
+import json
 
-def generate_secure_code(email2):
-   
-    random_code = ''.join(secrets.choice(string.ascii_letters + string.digits) for i in range(8))
-    server = smtplib.SMTP("smtp.gmail.com",587)
-    server.starttls()
-    email = "bongalos.justinejaeg8@gmail.com"
-    server.login(email,"bpajpgtgaaofdoaq")
-    server.sendmail(email,email2,random_code)
-    return random_code
+s = {"student_1": "password_1"}
+f = {"faculty_1": "fpassword_1"}
+with open ("ProfCred.json","w") as f:
+    json.dump(s,f)
